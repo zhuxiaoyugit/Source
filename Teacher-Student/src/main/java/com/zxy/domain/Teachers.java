@@ -2,27 +2,11 @@ package com.zxy.domain;
 
 public class Teachers {
 	private Integer id;
-	private String studentName;
-	private Integer teacherId;
-	private String grade;
-	private String createDate;
-	private String undoWork;
-
-	public String getUndoWork() {
-		return undoWork;
-	}
-
-	public void setUndoWork(String undoWork) {
-		this.undoWork = undoWork;
-	}
-
-	public String getStudentName() {
-		return studentName;
-	}
-
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
-	}
+	private String teacherName;
+	private Integer teacherJob;
+	private Integer isExist;
+	private String comeDate;
+	private String outDate;
 
 	public Integer getId() {
 		return id;
@@ -32,28 +16,44 @@ public class Teachers {
 		this.id = id;
 	}
 
-	public Integer getTeacherId() {
-		return teacherId;
+	public String getTeacherName() {
+		return teacherName;
 	}
 
-	public void setTeacherId(Integer teacherId) {
-		this.teacherId = teacherId;
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
 	}
 
-	public String getGrade() {
-		return grade;
+	public Integer getTeacherJob() {
+		return teacherJob;
 	}
 
-	public void setGrade(String grade) {
-		this.grade = grade;
+	public void setTeacherJob(Integer teacherJob) {
+		this.teacherJob = teacherJob;
 	}
 
-	public String getCreateDate() {
-		return createDate;
+	public Integer getIsExist() {
+		return isExist;
 	}
 
-	public void setCreateDate(String createDate) {
-		this.createDate = createDate;
+	public void setIsExist(Integer isExist) {
+		this.isExist = isExist;
+	}
+
+	public String getComeDate() {
+		return comeDate;
+	}
+
+	public void setComeDate(String comeDate) {
+		this.comeDate = comeDate;
+	}
+
+	public String getOutDate() {
+		return outDate;
+	}
+
+	public void setOutDate(String outDate) {
+		this.outDate = outDate;
 	}
 
 }

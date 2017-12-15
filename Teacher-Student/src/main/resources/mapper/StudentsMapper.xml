@@ -8,8 +8,9 @@
 		<result column="student_name" property="studentName" jdbcType="VARCHAR" />
 		<result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
 		<result column="grade" property="grade" jdbcType="VARCHAR" />
-		<result column="create_date" property="createDate" jdbcType="DATE" />
-		<result column="work_content" property="undoWork" jdbcType="VARCHAR" />
+		<result column="is_exist" property="isExist" jdbcType="INTEGER" />
+		<result column="come_date" property="comeDate" jdbcType="VARCHAR" />
+		<result column="out_date" property="outDate" jdbcType="VARCHAR" />
 	</resultMap>
 	<!-- 查询单条记录 -->
 	<select id="selectAllStudent" resultMap="BaseResultMap">

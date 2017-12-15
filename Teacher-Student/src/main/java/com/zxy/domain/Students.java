@@ -5,8 +5,34 @@ public class Students {
 	private String studentName;
 	private Integer teacherId;
 	private String grade;
-	private String createDate;
+	private Integer isExist;
+	private String comeDate;
+	private String outDate;
 	private String undoWork;
+
+	public Integer getIsExist() {
+		return isExist;
+	}
+
+	public void setIsExist(Integer isExist) {
+		this.isExist = isExist;
+	}
+
+	public String getComeDate() {
+		return comeDate;
+	}
+
+	public void setComeDate(String comeDate) {
+		this.comeDate = comeDate;
+	}
+
+	public String getOutDate() {
+		return outDate;
+	}
+
+	public void setOutDate(String outDate) {
+		this.outDate = outDate;
+	}
 
 	public String getUndoWork() {
 		return undoWork;
@@ -48,12 +74,5 @@ public class Students {
 		this.grade = grade;
 	}
 
-	public String getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(String createDate) {
-		this.createDate = createDate;
-	}
 
 }
