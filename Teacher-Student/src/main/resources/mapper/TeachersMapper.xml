@@ -13,6 +13,13 @@
     </resultMap>
     <!-- 查询单条记录 -->
     <select id="selectAllTeachers"  resultMap="BaseResultMap">
-        select * from t_teachers 
+        select * from t_teachers order by id asc
     </select>
+    <select id="selectCount" resultType="int">
+    	select count(*) from t_teachers
+    </select>
+    <insert id="addTeacher" parameterType="com.zxy.domain.Teachers">
+    	insert into t_teachers (teacher_name,teacher_job,is_exist,come_date)
+		VALUES(#{teacherName},#{teacherJob},0,NOW())
+    </insert>
 </mapper>

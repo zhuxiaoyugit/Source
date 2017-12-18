@@ -297,7 +297,7 @@
 			                              <td> <label for="uid${studentStatus.index}"><span class="font12_blue">${student.studentName }</span></label></td>
 			                              <td> <label for="uid${studentStatus.index}"><span class="font12_blue">${student.grade }</span></label></td>
 			                              <td> <label for="uid${studentStatus.index}"><span class="font12_blue">${student.undoWork }</span></label></td>
-			                              <td> <label for="uid${studentStatus.index}"><span class="font12_blue">${student.createDate }</span></label></td>
+			                              <td> <label for="uid${studentStatus.index}"><span class="font12_blue">${student.comeDate }</span></label></td>
 			                          </tr>
 		                          </c:forEach> 
 	                              

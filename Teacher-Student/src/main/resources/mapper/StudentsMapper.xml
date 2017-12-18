@@ -11,6 +11,7 @@
 		<result column="is_exist" property="isExist" jdbcType="INTEGER" />
 		<result column="come_date" property="comeDate" jdbcType="VARCHAR" />
 		<result column="out_date" property="outDate" jdbcType="VARCHAR" />
+		<result column="work_content" property="undoWork" jdbcType="VARCHAR" />
 	</resultMap>
 	<!-- 查询单条记录 -->
 	<select id="selectAllStudent" resultMap="BaseResultMap">

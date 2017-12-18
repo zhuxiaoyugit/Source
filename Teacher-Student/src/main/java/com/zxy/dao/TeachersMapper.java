@@ -8,4 +8,8 @@ import com.zxy.domain.Teachers;
 @Repository
 public interface TeachersMapper {
 	List<Teachers> selectAllTeachers();
+	
+	int selectCount();
+	
+	int addTeacher(Teachers teachers);
 }

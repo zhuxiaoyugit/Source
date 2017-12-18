@@ -16,4 +16,16 @@ public class TeachersService {
 	public List<Teachers> selectAllTeachers() {
 		return mapper.selectAllTeachers();
 	};
+	
+	public int selectCount(){
+		return mapper.selectCount();
+	}
+	
+	public int addTeacher(String name,String job){
+		Teachers teachers= new Teachers();
+		teachers.setTeacherName(name);
+		teachers.setTeacherJob(job);
+		
+		return mapper.addTeacher(teachers);
+	}
 }

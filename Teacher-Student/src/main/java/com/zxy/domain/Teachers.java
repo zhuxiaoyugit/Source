@@ -3,7 +3,7 @@ package com.zxy.domain;
 public class Teachers {
 	private Integer id;
 	private String teacherName;
-	private Integer teacherJob;
+	private String  teacherJob;
 	private Integer isExist;
 	private String comeDate;
 	private String outDate;
@@ -24,11 +24,11 @@ public class Teachers {
 		this.teacherName = teacherName;
 	}
 
-	public Integer getTeacherJob() {
+	public String getTeacherJob() {
 		return teacherJob;
 	}
 
-	public void setTeacherJob(Integer teacherJob) {
+	public void setTeacherJob(String teacherJob) {
 		this.teacherJob = teacherJob;
 	}
 
