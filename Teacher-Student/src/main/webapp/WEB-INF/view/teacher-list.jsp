@@ -63,7 +63,7 @@
    						<c:out value="离职"/>
 					</c:if>
 				</span></label></td>
-				<td class="td-manage"> <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">编辑【&#xe6df;】</i> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">删除【&#xe6e2;】</i></a></td>
+				<td class="td-manage"> <a title="编辑" href="javascript:;" onclick="member_edit('编辑','${pageContext.request.contextPath}/teachers/updateTeacher?id='+${teacher.id},${teacher.id},'','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">编辑【&#xe6df;】</i> <a title="删除" href="javascript:;" onclick="member_del(this,${teacher.id})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">删除【&#xe6e2;】</i></a></td>
 			</tr>
 		 </c:forEach>	
 		</tbody>
@@ -96,10 +96,6 @@ $(function(){
 function member_add(title,url,w,h){
 	layer_show(title,url,w,h);
 }
-/*用户-查看*/
-function member_show(title,url,id,w,h){
-	layer_show(title,url,w,h);
-}
 
 /*用户-编辑*/
 function member_edit(title,url,id,w,h){
@@ -111,7 +107,7 @@ function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
+			url: 'delTeacher?id='+id,
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();

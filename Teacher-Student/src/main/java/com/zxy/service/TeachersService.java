@@ -13,6 +13,9 @@ public class TeachersService {
 	@Autowired
 	private TeachersMapper mapper;
 
+	public Teachers selectTeacherById(Integer id){
+		return mapper.selectTeacherById(id);
+	}
 	public List<Teachers> selectAllTeachers() {
 		return mapper.selectAllTeachers();
 	};
@@ -27,5 +30,21 @@ public class TeachersService {
 		teachers.setTeacherJob(job);
 		
 		return mapper.addTeacher(teachers);
+	}
+	
+	public int deleteTeacherById(int id){
+		return mapper.deleteTeacherById(id);
+	}
+	
+	public int updateTeacher(Integer id,String teacherName,String teacherJob,Integer isExist,String comeDate,String outDate ){
+		Teachers teachers = new Teachers();
+		teachers.setId(id);
+		teachers.setTeacherName(teacherName);
+		teachers.setTeacherJob(teacherJob);
+		teachers.setIsExist(isExist);
+		teachers.setComeDate(comeDate);
+		teachers.setOutDate(outDate);
+		
+		return mapper.updateTeacher(teachers);
 	}
 }

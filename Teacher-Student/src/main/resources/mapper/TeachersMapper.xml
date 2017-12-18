@@ -12,6 +12,9 @@
         <result column="out_date" property="outDate" jdbcType="DATE" />
     </resultMap>
     <!-- 查询单条记录 -->
+    <select id="selectTeacherById" parameterType="int" resultMap="BaseResultMap">
+    	select * from t_teachers where id=#{id}
+    </select>
     <select id="selectAllTeachers"  resultMap="BaseResultMap">
         select * from t_teachers order by id asc
     </select>
@@ -22,4 +25,31 @@
     	insert into t_teachers (teacher_name,teacher_job,is_exist,come_date)
 		VALUES(#{teacherName},#{teacherJob},0,NOW())
     </insert>
+    
+    <delete id="deleteTeacherById" parameterType="int">
+    	delete from t_teachers where id=#{value}
+    </delete>
+    
+    <update id="updateTeacher" parameterType="com.zxy.domain.Teachers">
+    	update t_teachers set 
+    	<if test="teacherName != null">
+    		teacher_name=#{teacherName}
+    	</if>
+    	<if test="teacherJob != null">
+    		,teacher_job=#{teacherJob}
+    	</if>
+    	<if test="comeDate != null">
+    		,come_date=#{teacherName}
+    	</if>
+    	<if test="isExist != null">
+    		,is_exist=#{isExist}
+    	</if>
+    	<if test="isExist != null">
+    		,is_exist=#{isExist}
+    	</if>
+    	<if test="outDate != null">
+    		,out_date=#{outDate}
+    	</if>
+		where id=#{id}
+    </update>
 </mapper>

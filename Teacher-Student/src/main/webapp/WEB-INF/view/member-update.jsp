@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -32,26 +33,40 @@
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
-<!-- <article class="page-container" > -->
 <article class="page-container">
-	<form action="${pageContext.request.contextPath}/teachers/addTeacher" method="post" class="form form-horizontal" id="form-member-add">
+	<form action="${pageContext.request.contextPath}/teachers/updateTeacher" method="post" class="form form-horizontal" id="form-member-add">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3" style="width:80px;margin-left:20px"><span class="c-red">*</span>姓名：</label>
+			<input type="hidden" class="" value="${teacher.id }" placeholder="" id="id" name="id">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="name" name="name">
+				<input type="text" class="input-text" value="${teacher.teacherName }" placeholder="" id="name" name="teacherName">
+				
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>职位：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="${teacher.teacherJob }" placeholder="" id="job" name="teacherJob">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>在职状态：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="radio-box">
+					<input name="isExist" value=0 type="radio" id="sex-1" ${teacher.isExist == 0 ?"checked":""  } >
+					<label for="sex-1">在职</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-2" name="isExist" value=1 ${teacher.isExist == 1 ?"checked":""  } >
+					<label for="sex-2">离职</label>
+				</div>
 			</div>
 		</div>
 		
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3" style="width:80px;margin-left:20px"><span class="c-red">*</span>职位：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="job" name="job">
-			</div>
-		</div>
 		
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" style="margin-left:-67px">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
 			</div>
 		</div>
 	</form>
@@ -86,7 +101,12 @@ $(function(){
 			job:{
 				required:true,
 			},
-			
+			isExist:{
+				required:true,
+			},
+			id:{
+				required:true,
+			},
 			
 		},
 		onkeyup:false,
@@ -95,7 +115,6 @@ $(function(){
 		submitHandler:function(form){
 			$(form).ajaxSubmit();
 			var index = parent.layer.getFrameIndex(window.name);
-			//parent.$('#reflash').click();
 			window.parent.location.reload();
 			parent.layer.close(index);
 		}
