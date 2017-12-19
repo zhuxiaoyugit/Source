@@ -111,6 +111,7 @@ function member_del(obj,id){
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();
+				window.location.reload();
 				layer.msg('已删除!',{icon:1,time:1000});
 			},
 			error:function(data) {
