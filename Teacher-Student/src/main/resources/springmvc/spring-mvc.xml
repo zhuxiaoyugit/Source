@@ -18,7 +18,7 @@
 	<mvc:annotation-driven />
 	<!-- 静态资源访问 -->
 	<mvc:resources mapping="assets/**" location="/WEB-INF/assets/" />
-	<mvc:resources mapping="lib/**" location="/WEB-INF/lib/" />
+	<mvc:resources mapping="lib-css/**" location="/WEB-INF/lib-css/" />
 	<mvc:resources mapping="static/**" location="/WEB-INF/static/" />
 	<mvc:resources mapping="temp/**" location="/WEB-INF/temp/" />
 	<mvc:resources mapping="js/**" location="/WEB-INF/js/" />
