@@ -26,7 +26,7 @@ public class TotalController {
 	public ModelAndView getIndex() {
 		ModelAndView maView = new ModelAndView("allTable");
 		List<Teachers> teacherList = teachersService.selectAllTeachers(null,null,null);
-		List<Students> studentList = studentsService.selectAllStudent();
+		List<Students> studentList = studentsService.selectAllStudent(null,null,null);
 		maView.addObject("teacherList", teacherList);
 		maView.addObject("studentList", studentList);
 		return maView;

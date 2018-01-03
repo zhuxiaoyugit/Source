@@ -20,6 +20,15 @@ public class TeachersService {
 	}
 	public List<Teachers> selectAllTeachers(String str,String beginDate,String endDate) {
 		Map<String, String> map = new HashMap<>();
+		if (str == "") {
+			str = null;
+		}
+		if (beginDate == "") {
+			beginDate = null;
+		}
+		if (endDate == "") {
+			endDate = null;
+		}
 		map.put("str", str);
 		map.put("beginDate", beginDate);
 		map.put("endDate", endDate);
@@ -28,6 +37,15 @@ public class TeachersService {
 	
 	public int selectCount(String str,String beginDate,String endDate){
 		Map<String, String> map = new HashMap<>();
+		if (str == "") {
+			str = null;
+		}
+		if (beginDate == "") {
+			beginDate = null;
+		}
+		if (endDate == "") {
+			endDate = null;
+		}
 		map.put("str", str);
 		map.put("beginDate", beginDate);
 		map.put("endDate", endDate);

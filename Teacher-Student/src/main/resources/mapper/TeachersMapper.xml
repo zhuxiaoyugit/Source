@@ -18,9 +18,8 @@
     <select id="selectAllTeachers"  resultMap="BaseResultMap" parameterType="java.util.Map">
         select * from t_teachers 
         <where>
-        
         	<if test="str != null">
-        		and (teacher_name=#{str} or teacher_job =#{str}) 
+        		teacher_name=#{str}
         	</if>
         	<if test="beginDate !=null">
         	<![CDATA[
@@ -29,7 +28,7 @@
         	</if>
         	<if test="endDate !=null">
         	<![CDATA[
-        		come_date <= #{endDate}
+        		and come_date < #{endDate}
         		]]>
         	</if>
         	
@@ -40,10 +39,10 @@
     	select count(*) from t_teachers 
     	<where>
         	<if test="str != null">
-        		teacher_name=#{str} or teacher_job =#{str} 
+        		teacher_name=#{str} 
         	</if>
         	<if test="comeDate !=null">
-        		come_date =#{comeDate}
+        		and come_date =#{comeDate}
         	</if>
         </where>
     </select>
@@ -66,9 +65,6 @@
     	</if>
     	<if test="comeDate != null">
     		,come_date=#{teacherName}
-    	</if>
-    	<if test="isExist != null">
-    		,is_exist=#{isExist}
     	</if>
     	<if test="isExist != null">
     		,is_exist=#{isExist}

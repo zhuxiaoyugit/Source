@@ -30,6 +30,10 @@ public class TeachersController {
 		modelAndView.addObject("teacherList", list);
 		int count = service.selectCount(str,beginDate,endDate);
 		modelAndView.addObject("num", count);
+		
+		modelAndView.addObject("str", str);
+		modelAndView.addObject("beginDate", beginDate);
+		modelAndView.addObject("endDate",endDate);
 		return modelAndView;
 	}
 

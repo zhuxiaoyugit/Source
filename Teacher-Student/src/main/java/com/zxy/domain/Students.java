@@ -4,11 +4,20 @@ public class Students {
 	private Integer id;
 	private String studentName;
 	private Integer teacherId;
+	private String teacherName;
 	private String grade;
 	private Integer isExist;
 	private String comeDate;
 	private String outDate;
-	private String undoWork;
+
+	
+	public String getTeacherName() {
+		return teacherName;
+	}
+
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
+	}
 
 	public Integer getIsExist() {
 		return isExist;
@@ -34,13 +43,6 @@ public class Students {
 		this.outDate = outDate;
 	}
 
-	public String getUndoWork() {
-		return undoWork;
-	}
-
-	public void setUndoWork(String undoWork) {
-		this.undoWork = undoWork;
-	}
 
 	public String getStudentName() {
 		return studentName;

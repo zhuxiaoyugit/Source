@@ -2,45 +2,91 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zxy.dao.StudentsMapper">
-	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
-	<resultMap id="BaseResultMap" type="com.zxy.domain.Students">
+	<resultMap id="StudentMap" type="com.zxy.domain.Students">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="student_name" property="studentName" jdbcType="VARCHAR" />
 		<result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+		<result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
 		<result column="grade" property="grade" jdbcType="VARCHAR" />
 		<result column="is_exist" property="isExist" jdbcType="INTEGER" />
 		<result column="come_date" property="comeDate" jdbcType="VARCHAR" />
 		<result column="out_date" property="outDate" jdbcType="VARCHAR" />
-		<result column="work_content" property="undoWork" jdbcType="VARCHAR" />
 	</resultMap>
-	<!-- 查询单条记录 -->
-	<select id="selectAllStudent" resultMap="BaseResultMap">
-		SELECT ts.* ,GROUP_CONCAT(work_content) work_content from t_students ts 
-		LEFT JOIN t_school_work tsw on tsw.student_id=ts.id
-		and tsw.work_status=0 GROUP BY ts.id
-	</select>
-	
+
 	<insert id="addNewStudent" parameterType="com.zxy.domain.Students">
-		insert into t_students (student_name,grade,teacher_id,create_date) 
-			VALUES (#{studentName},#{grade},#{teacher_id},NOW())
+		insert into t_students
+		(student_name,grade,teacher_id,come_date)
+		VALUES (#{studentName},#{grade},#{teacher_id},NOW())
 	</insert>
-	
+
 	<update id="updateStudent" parameterType="com.zxy.domain.Students">
-		update t_students set create_date=create_date 
+		update t_students set come_date=come_date
 		<if test="studentName != null">
 			, student_name=#{studentName}
 		</if>
 		<if test="grade != null">
 			, grade=#{grade}
 		</if>
-		<if test="teacher_id != null">
+		<if test="teacherId != null">
 			, teacher_id=#{teacherId}
 		</if>
-		where id=1
+		<if test="comeDate != null">
+			,come_date=#{comeDate}
+		</if>
+		<if test="outDate != null">
+			,out_date=#{outDate}
+		</if>
+		where id=#{id}
 	</update>
+
+
+
+	<select id="selectStudentById" parameterType="int" resultMap="StudentMap">
+		select * from t_students where id=#{id} order by id asc
+	</select>
+
+	<select id="selectAllStudent" parameterType="java.util.Map" resultMap="StudentMap">
+		select ts.*,tt.teacher_name from t_students ts,t_teachers tt
+		<where>
+			ts.teacher_id =tt.id
+			<if test="str !=null">
+			 and (student_name =#{str} or grade=#{str} or tt.teacher_name=#{str})
+			</if>
+			<if test="beginDate !=null">
+				<![CDATA[
+				and	come_date >=#{beginDate}
+				]]>
+			</if>
+			<if test="endDate !=null">
+				<![CDATA[
+				and	come_date<#{endDate}
+				]]>
+			</if>
+			
+			and ts.is_exist=0
+		</where> order by id asc
+	</select>
 	
-	
-	
-	
-	
+	<select id="selectCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from  t_students ts,t_teachers tt
+		<where>
+			ts.teacher_id =tt.id
+			<if test="str !=null">
+			 and (student_name =#{str} or grade=#{str} or tt.teacher=#{str})
+			</if>
+			<if test="beginDate !=null">
+				<![CDATA[
+				and	come_date >=#{beginDate}
+				]]>
+			</if>
+			<if test="endDate !=null">
+				<![CDATA[
+				and	come_date < #{endDate}
+				]]>
+			</if>
+			
+			and ts.is_exist=0
+		</where>
+	</select>
+
 </mapper>

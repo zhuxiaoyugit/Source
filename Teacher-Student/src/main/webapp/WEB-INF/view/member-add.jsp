@@ -95,12 +95,14 @@ $(function(){
 		submitHandler:function(form){
 			$(form).ajaxSubmit();
 			var index = parent.layer.getFrameIndex(window.name);
-			//parent.$('#reflash').click();
-			window.parent.location.reload();
-			parent.layer.close(index);
+			setTimeout(test, 100); 
 		}
 	});
 });
+function test() {
+	window.parent.location.reload();
+	parent.layer.close(index);
+}
 </script> 
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

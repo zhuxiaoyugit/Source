@@ -37,36 +37,38 @@
 		<button type="submit" class="btn btn-success radius" id="findTeacher" ><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
 	</form>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="member_add('添加用户','${pageContext.request.contextPath}/teachers/addTeacher','500','300')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> <span class="r">共有数据：<strong>${num }</strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="member_add('添加用户','${pageContext.request.contextPath}/students/addStudent','500','300')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> <span class="r">共有数据：<strong>${num }</strong> 条</span> </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 			<tr class="text-c">
-				<th width="80">ID</th>
-				<th width="100">姓名</th>
-				<th width="40">职位</th>
-				<th width="130">加入时间</th>
+				<th width="20">ID</th>
+				<th width="80">姓名</th>
+				<th width="60">年级</th>
+				<th width="60">老师</th>
 				<th width="70">状态</th>
+				<th width="100">入学时间</th>
 				<th width="100">操作</th>
 			</tr>
 		</thead>
 		<tbody>
-		 <c:forEach items="${teacherList}" var="teacher" varStatus="teacherStatus">                         
+		 <c:forEach items="${studentList}" var="student" varStatus="studentStatus">                         
 			<tr class="text-c">
-				<td><label for="uid${teacherStatus.index}">${teacherStatus.index+1}</label></td>
-				<td><label for="uid${teacherStatus.index}">${teacher.teacherName }</label></td>
-				<td><label for="uid${teacherStatus.index}">${teacher.teacherJob }</label></td>
-				<td><label for="uid${teacherStatus.index}">${teacher.comeDate }</label></td>
-				<td class="td-status"><label for="uid${teacherStatus.index}"><span class="label label-success radius">
-					<c:set var="isExist" scope="session" value="${teacher.isExist}"/>
+				<td><label for="uid${studentStatus.index}">${studentStatus.index+1}</label></td>
+				<td><label for="uid${studentStatus.index}">${student.studentName }</label></td>
+				<td><label for="uid${studentStatus.index}">${student.grade }</label></td>
+				<td><label for="uid${studentStatus.index}">${student.teacherName}</label></td>
+				<td class="td-status"><label for="uid${studentStatus.index}"><span class="label label-success radius">
+					<c:set var="isExist" scope="session" value="${student.isExist}"/>
 					<c:if test="${isExist == 0}">
-   						<c:out value="在职"/>
+   						<c:out value="在读"/>
 					</c:if>
 					<c:if test="${isExist == 1}">
-   						<c:out value="离职"/>
+   						<c:out value="已离开"/>
 					</c:if>
 				</span></label></td>
-				<td class="td-manage"> <a title="编辑" href="javascript:;" onclick="member_edit('编辑','${pageContext.request.contextPath}/teachers/updateTeacher?id='+${teacher.id},${teacher.id},'','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">编辑【&#xe6df;】</i> <a title="删除" href="javascript:;" onclick="member_del(this,${teacher.id})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">删除【&#xe6e2;】</i></a></td>
+				<td><label for="uid${studentStatus.index}">${student.comeDate }</label></td>
+				<td class="td-manage"> <a title="编辑" href="javascript:;" onclick="member_edit('编辑','${pageContext.request.contextPath}/students/updateTeacherStudent?id='+${teacher.id},${teacher.id},'','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">编辑【&#xe6df;】</i> <a title="删除" href="javascript:;" onclick="member_del(this,${student.id})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">删除【&#xe6e2;】</i></a></td>
 			</tr>
 		 </c:forEach>	
 		</tbody>
@@ -130,5 +132,21 @@ function member_del(obj,id){
 
 
 </script> 
+
+
+<%-- 
+<label for="uid${studentStatus.index}" >
+						<select>
+							<c:forEach items="${teacherList}" var="teacher">
+						        <option value="${teacher.id}"
+						            如果所选是之前的值 可以自动填写！
+						            <c:if test="${teacher.id==student.teacherId}">selected = "selected"
+						            </c:if> >
+						            ${teacher.teacherName}
+						        </option>
+						    </c:forEach>
+						</select>
+					</label> --%>
+
 </body>
 </html>

@@ -115,11 +115,17 @@ $(function(){
 		submitHandler:function(form){
 			$(form).ajaxSubmit();
 			var index = parent.layer.getFrameIndex(window.name);
-			window.parent.location.reload();
-			parent.layer.close(index);
+			setTimeout(test, 100);  
+			//window.parent.location.reload();
+			//parent.layer.close(index);
 		}
 	});
 });
+function test() {
+	window.parent.location.reload();
+	parent.layer.close(index);
+}
+
 </script> 
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
