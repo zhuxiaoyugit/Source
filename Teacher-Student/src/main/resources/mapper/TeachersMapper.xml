@@ -15,11 +15,37 @@
     <select id="selectTeacherById" parameterType="int" resultMap="BaseResultMap">
     	select * from t_teachers where id=#{id}
     </select>
-    <select id="selectAllTeachers"  resultMap="BaseResultMap">
-        select * from t_teachers order by id asc
+    <select id="selectAllTeachers"  resultMap="BaseResultMap" parameterType="java.util.Map">
+        select * from t_teachers 
+        <where>
+        
+        	<if test="str != null">
+        		and (teacher_name=#{str} or teacher_job =#{str}) 
+        	</if>
+        	<if test="beginDate !=null">
+        	<![CDATA[
+        		and come_date >= #{beginDate}
+        		]]>
+        	</if>
+        	<if test="endDate !=null">
+        	<![CDATA[
+        		come_date <= #{endDate}
+        		]]>
+        	</if>
+        	
+        </where>
+        order by id asc
     </select>
-    <select id="selectCount" resultType="int">
-    	select count(*) from t_teachers
+    <select id="selectCount" resultType="int" parameterType="java.util.Map">
+    	select count(*) from t_teachers 
+    	<where>
+        	<if test="str != null">
+        		teacher_name=#{str} or teacher_job =#{str} 
+        	</if>
+        	<if test="comeDate !=null">
+        		come_date =#{comeDate}
+        	</if>
+        </where>
     </select>
     <insert id="addTeacher" parameterType="com.zxy.domain.Teachers">
     	insert into t_teachers (teacher_name,teacher_job,is_exist,come_date)

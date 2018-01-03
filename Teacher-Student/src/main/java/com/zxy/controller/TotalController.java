@@ -25,7 +25,7 @@ public class TotalController {
 	@RequestMapping("/index")
 	public ModelAndView getIndex() {
 		ModelAndView maView = new ModelAndView("allTable");
-		List<Teachers> teacherList = teachersService.selectAllTeachers();
+		List<Teachers> teacherList = teachersService.selectAllTeachers(null,null,null);
 		List<Students> studentList = studentsService.selectAllStudent();
 		maView.addObject("teacherList", teacherList);
 		maView.addObject("studentList", studentList);

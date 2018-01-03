@@ -1,6 +1,7 @@
 package com.zxy.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -9,9 +10,9 @@ import com.zxy.domain.Teachers;
 public interface TeachersMapper {
 	Teachers selectTeacherById(Integer id);
 	
-	List<Teachers> selectAllTeachers();
+	List<Teachers> selectAllTeachers(Map<String, String> map);
 	
-	int selectCount();
+	int selectCount(Map<String, String> map);
 	
 	int addTeacher(Teachers teachers);
 	

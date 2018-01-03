@@ -24,11 +24,11 @@ public class TeachersController {
 	private TeachersService service;
 
 	@RequestMapping("/teacherList")
-	public ModelAndView teacherList() {
+	public ModelAndView teacherList(String str,String beginDate,String endDate) {
 		ModelAndView modelAndView = new ModelAndView("teacher-list");
-		List<Teachers> list = service.selectAllTeachers();
+		List<Teachers> list = service.selectAllTeachers(str,beginDate,endDate);
 		modelAndView.addObject("teacherList", list);
-		int count = service.selectCount();
+		int count = service.selectCount(str,beginDate,endDate);
 		modelAndView.addObject("num", count);
 		return modelAndView;
 	}
@@ -63,7 +63,7 @@ public class TeachersController {
 			j.put("msg", "error");
 			return j.toString();
 		}
-		j.put("msg", "操作成功");
+		j.put("msg", "鎿嶄綔鎴愬姛");
 		return j.toString();
 	}
 

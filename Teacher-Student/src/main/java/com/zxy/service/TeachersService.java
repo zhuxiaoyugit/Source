@@ -1,6 +1,8 @@
 package com.zxy.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +18,20 @@ public class TeachersService {
 	public Teachers selectTeacherById(Integer id){
 		return mapper.selectTeacherById(id);
 	}
-	public List<Teachers> selectAllTeachers() {
-		return mapper.selectAllTeachers();
+	public List<Teachers> selectAllTeachers(String str,String beginDate,String endDate) {
+		Map<String, String> map = new HashMap<>();
+		map.put("str", str);
+		map.put("beginDate", beginDate);
+		map.put("endDate", endDate);
+		return mapper.selectAllTeachers(map);
 	};
 	
-	public int selectCount(){
-		return mapper.selectCount();
+	public int selectCount(String str,String beginDate,String endDate){
+		Map<String, String> map = new HashMap<>();
+		map.put("str", str);
+		map.put("beginDate", beginDate);
+		map.put("endDate", endDate);
+		return mapper.selectCount(map);
 	}
 	
 	public int addTeacher(String name,String job){
