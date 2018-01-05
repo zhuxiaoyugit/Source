@@ -34,5 +34,9 @@ public class StudentsController {
 		
 		return modelAndView;
 	}
+	@RequestMapping("/redirect")
+	public String redirect() {
+		return "redirect:studentList";
+	}
 	
 }
