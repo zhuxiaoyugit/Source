@@ -27,7 +27,7 @@ p {
   text-align: center;
   position: absolute;
   left: 50%;
-  top: 38%;
+  top: 42%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   color: #daf6ff;
@@ -35,8 +35,8 @@ p {
 }
 #clock .time {
   letter-spacing: 0.05em;
-  font-size: 110px;
-  padding: 5px 0;
+  font-size: 210px;
+  padding: 25px 0;
 }
 #clock .date {
   letter-spacing: 0.1em;
@@ -57,7 +57,7 @@ p {
 <div id="clock">
     <p class="date">{{ date }}</p>
     <p class="time">{{ time }}</p>
-    <p class="text">数字时钟</p>
+    <!-- <p class="text">数字时钟</p> -->
 </div>
 
 <script>
@@ -87,7 +87,7 @@ function zeroPadding(num, digit) {
 }
 </script>
 
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff">
+<div style="text-align:center;margin:70px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff">
 <h2><p>欢  迎  使  用</p></h2>
 </div>
 </body>
