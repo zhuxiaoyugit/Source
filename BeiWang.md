@@ -1,7 +1,5 @@
 # spring-study
-git账号：zhuxiaoyugit a425754762yy
 
-a425754762  a425754762yy
 http://www.cnblogs.com/swiftma/default.html?page=8
 
 Spring学习网址：
